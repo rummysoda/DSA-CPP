@@ -24,3 +24,22 @@ public:
 
     }
 };
+
+// solution fond in leetcode 
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+
+        int minI = prices[0];
+        int maxProfit = 0;
+        int n = prices.size();
+
+        for (int i = 0 ; i < n; i++) {
+            int cost = prices[i] - minI;
+            maxProfit = max (cost, maxProfit);
+            minI = min(minI, prices[i]);
+        }
+
+        return maxProfit;
+    }
+};
