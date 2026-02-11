@@ -23,4 +23,22 @@ public:
     }
 };
 
-// recursion o(n)
+// iterative o(n)
+
+class Solution {
+public:
+    TreeNode* invertTree(TreeNode* root) {
+        //queue solution iteratively
+        if (root == nullptr) {return nullptr;}
+        queue<TreeNode*> q;
+        q.push(root);
+        while (!q.empty()) {
+            TreeNode* node = q.front();
+            q.pop();
+            swap(node->left,node->right);
+            if(node->left != nullptr) {q.push(node->left);}
+            if(node->right != nullptr) {q.push(node->right);}
+        }
+        return root;
+    }
+};

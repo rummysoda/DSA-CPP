@@ -12,14 +12,15 @@
 class Solution {
 public:
     int maxDepth(TreeNode* root) {
-        //bfs solution
+        //bfs solution'
+        // not iterative (uses stack)
         // we keep repalcing the children with the level of depth
         if (!root) return 0;
         int level = 0;
         queue<TreeNode*> q;
         q.push(root);
         while (!q.empty()) {
-            int s = q.size(); // i dont undestand why s.sizehere isnt same if i put q.size( ) in the for loop
+            int s = q.size(); // q.size() in for loop is bad because were popping q so it changes size
             for (int i = 0; i < s; i++) {
                 TreeNode* node = q.front();
                 q.pop();
@@ -34,3 +35,13 @@ public:
 };
 
 // o n time complexity
+
+// recursively
+
+class Solution {
+public:
+    int maxDepth(TreeNode* root) {
+        if (!root) return 0;
+        return 1 + max(maxDepth(root->left),maxDepth(max->right));
+    }
+};
